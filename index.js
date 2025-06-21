@@ -1,7 +1,7 @@
 const characters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9","~","`","!","@","#","$","%","^","&","*","(",")","_","-","+","=","{","[","}","]",",","|",":",";","<",">",".","?",
 "/"];
 
-let passwordLength = 15;
+let passwordLength;
 let password = "";
 let placeholderText = "Click the button to generate a password.";
 // Get the password display element and button
@@ -11,6 +11,19 @@ let copyButton = document.getElementById("copy-password-button");
 // Set the initial placeholder text
 passwordElement.textContent = placeholderText;
 
+//Number of characters in the password
+let passwordLengthInput = document.getElementById("password-length-input");
+let passwordLenghtValue = document.getElementById("password-length-value");
+passwordLenghtValue.textContent = passwordLengthInput.value;
+// Set the initial password length
+passwordLength = parseInt(passwordLengthInput.value);
+// Add an event listener to the input field to update the password length when the user changes it
+passwordLengthInput.addEventListener("input", function() {
+    passwordLength = parseInt(passwordLengthInput.value);
+     // Update the displayed value
+    passwordLenghtValue.textContent = passwordLength;
+}
+);
 //Hide copy button initially
 copyButton.style.display = "none";
 
